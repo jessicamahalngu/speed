@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Speed Fine Calculator</title>
+  <style>
+    body {
+      background-image: url('codeGif.gif');
+      background-size: cover;
+      background-position: center;
+      font-family: Arial;
+      text-align: center;
+      margin: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <label for="speedInput">Speed:</label>
+  <input type="number" id="speedInput" min="0" placeholder="Enter speed">
+
+  <button onclick="calculateFine()">Check Fine</button>
+
+  <p id="fineDisplay"></p>
+  <br>
+
+  <script>
+    function calculateFine() {
+      var speed = parseFloat(document.getElementById("speedInput").value);
+      var fine;
+
+      if (speed >= 60 && speed <= 80) {
+        fine = 100;
+      } else if (speed > 80 && speed <= 100) {
+        fine = 200;
+      } else if (speed > 100 && speed <= 120) {
+        fine = 250;
+      } else if (speed > 120 && speed <= 140) {
+        fine = 500;
+      } else if (speed > 140 && speed <= 160) {
+        fine = 1000;
+      } else if (speed > 160) {
+        fine = "Jail";
+      } else {
+        fine = "Invalid speed";
+      }
+
+      document.getElementById("fineDisplay").innerText = "Fine: " + (fine === "Jail" ? "Go to Jail" : "R" + fine);
+    }
+  </script>
+</body>
+
+</html>
+
+On Thur, 7 Mar 2024 at 15:30, JessieM <jessicamahlangu660@gmail.com> wrote:
+<html>
+<head>
+  <title>Age</title>
+  <style>
+    body {
+      background-image: url('codeGif.gif');
+      background-size: cover;
+      background-position: center;
+      font-family: Arial;
+      text-align: center;
+      margin: 50px;
+    }
+  </style>
+</head>
+<body>
+  <label for="ageInput">Age:</label>
+  <input type="number" id="ageInput" min="0" placeholder="Enter your age">
+ 
+  <label for="quantityInput">Quantity:</label>
+  <input type="number" id="quantityInput" min="1" placeholder="Enter quantity">
+ 
+  <button onclick="calculatePrice()">Check Price</button>
+  <button onclick="calculateYOB()">Check YOB</button>
+ 
+  <p id="priceDisplay"></p>
+  <p id="yobDisplay"></p>
+  <p id="quantityDisplay"></p>
+  <p id="totalPriceDisplay"></p>
+  <br>
+ 
+  <h2>Price-List</h2>
+ 
+  <label>0 - 3: FREE</label><br>
+  <label>3 - 12: R100</label><br>
+  <label>12 - 18: R150</label><br>
+  <label>18 - 65: R200</label><br>
+  <label>65+: FREE</label><br>
+
+  <script>
+    function calculatePrice() {
+      var age = parseFloat(document.getElementById("ageInput").value);
+      var quantity = parseFloat(document.getElementById("quantityInput").value);
+      var price;
+
+      if (age >= 0 && age <= 3) {
+        price = 0;
+      } else if (age > 3 && age <= 12) {
+        price = 100;
+      } else if (age > 12 && age <= 18) {
+        price = 150;
+      } else if (age > 18 && age <= 65) {
+        price = 200;
+      } else if (age > 65) {
+        price = 0;
+      } else {
+        price = "Invalid age";
+      }
+
+      var totalPrice = price * quantity;
+      if (isNaN(totalPrice) || price === "Invalid age") {
+        document.getElementById("priceDisplay").innerText = "Price: " + price;
+        document.getElementById("totalPriceDisplay").innerText = "";
+      } else {
+        document.getElementById("priceDisplay").innerText = "Price: R" + price;
+        document.getElementById("totalPriceDisplay").innerText = "Total Price: R" + totalPrice;
+      }
+    }
+
+    function calculateYOB() {
+      var age = parseFloat(document.getElementById("ageInput").value);
+      if (!isNaN(age)) {
+        var yob = 2024 - age;
+        document.getElementById("yobDisplay").textContent = "Year Of Birth: " + yob;
+      } else {
+        document.getElementById("yobDisplay").textContent = "Year Of Birth: Invalid age";
+      }
+    }
+  </script>
+</body>
+</html>
+
